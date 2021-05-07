@@ -218,7 +218,11 @@ class PrinterWidget extends StatelessWidget {
     return Consumer<PrinterModel>(builder: (context, printer, child) {
       return InkWell(
           onTap: () {
-            Manager().setPrinter(printer.printer);
+            if(printer.printer != null) {
+              Manager().setPrinter(printer.printer);
+            } else {
+              Manager().setBtPrinter(printer.btPrinter);
+            }
           },
           child: Padding(
               padding: const EdgeInsets.all(16.0),
